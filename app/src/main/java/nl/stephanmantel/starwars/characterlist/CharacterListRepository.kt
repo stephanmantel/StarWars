@@ -11,11 +11,11 @@ class CharacterListRepository (
     private val characterMapper: CharacterMapper
 ) {
 
-    fun requestPeople(page: Int): Single<List<Character>> {
-        return starWarsService.getPeople(page)
+    fun requestPeople(): Single<List<Character>> {
+        return starWarsService.getPeople()
             .subscribeOn(Schedulers.io())
             .map {
-                characterMapper.apply(it)
+                characterMapper.apply(it.result)
             }
 
     }

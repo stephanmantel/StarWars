@@ -17,7 +17,7 @@ internal class CharacterListViewModel (
 
     internal fun fetchCharacters() {
         characterListMutableLiveData.value = Resource.loading()
-        compositeDisposable += repository.requestPeople(1)
+        compositeDisposable += repository.requestPeople()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 characterListMutableLiveData.value = Resource.success(it)
