@@ -8,8 +8,14 @@
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fontFamily="@font/poller_one"
+        android:textColor="@color/colorAccent"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
         tools:text="BB-8" />
 
 </LinearLayout>
