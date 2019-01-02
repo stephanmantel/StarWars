@@ -12,4 +12,9 @@ internal class CharacterListViewModel (
     private val characterListMutableLiveData = MutableLiveData<Resource<List<Character>>>()
     internal val characterListLiveData: LiveData<Resource<List<Character>>> = characterListMutableLiveData
 
+    internal fun fetchCharacters() {
+        characterListMutableLiveData.value = Resource.loading()
+        characterListMutableLiveData.value = Resource.success(emptyList())
+    }
+
 }
