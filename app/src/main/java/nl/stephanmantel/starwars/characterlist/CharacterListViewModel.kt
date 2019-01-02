@@ -7,6 +7,7 @@ import nl.stephanmantel.domain.Character
 import nl.stephanmantel.starwars.common.Resource
 
 internal class CharacterListViewModel (
+    private val repository: CharacterListRepository
 ) : ViewModel() {
 
     private val characterListMutableLiveData = MutableLiveData<Resource<List<Character>>>()
