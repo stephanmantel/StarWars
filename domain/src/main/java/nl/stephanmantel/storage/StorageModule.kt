@@ -12,4 +12,9 @@ val StorageModule = module {
             .fallbackToDestructiveMigration()
             .build()
     }
+
+    factory {
+        val database: StarWarsRoomDatabase = get()
+        database.characterDao()
+    }
 }
