@@ -1,7 +1,16 @@
 package nl.stephanmantel.starwars.characterlist
 
-class CharacterListRepository {
+import io.reactivex.schedulers.Schedulers
+import nl.stephanmantel.network.StarWarsService
 
+class CharacterListRepository (
+    private val starWarsService: StarWarsService
+) {
 
+    fun requestPeople(page: Int) {
+        starWarsService.getPeople(page)
+            .subscribeOn(Schedulers.io())
+
+    }
 
 }
