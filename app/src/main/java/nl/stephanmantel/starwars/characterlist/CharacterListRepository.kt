@@ -1,6 +1,6 @@
 package nl.stephanmantel.starwars.characterlist
 
-import io.reactivex.Single
+import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import nl.stephanmantel.domain.Character
 import nl.stephanmantel.network.StarWarsService
@@ -13,16 +13,18 @@ class CharacterListRepository (
     private val characterMapper: CharacterMapper
 ) {
 
-    fun requestPeople(): Single<List<Character>> {
-        return starWarsService.getPeople()
-            .subscribeOn(Schedulers.io())
+    fun requestPeople(): Observable<List<Character>> {
+        val localCharacters = characterDao.getCharacters()
+        val networkCharacters = starWarsService.getPeople()
             .map {
                 characterMapper.apply(it.result)
             }
             .doOnSuccess {
                 characterDao.storeCharacters(it)
             }
-
+        return localCharacters.toObservable()
+            .concatWith(networkCharacters.toObservable())
+            .subscribeOn(Schedulers.io())
     }
 
 }
