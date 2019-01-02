@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import nl.stephanmantel.domain.Character
 import nl.stephanmantel.starwars.R
+import nl.stephanmantel.starwars.common.Resource
 import org.koin.android.viewmodel.ext.android.viewModel
 
 internal class CharacterListFragment: Fragment() {
@@ -28,7 +29,7 @@ internal class CharacterListFragment: Fragment() {
         })
     }
 
-    private fun handleCharacterListChanged(characterList: List<Character>?) {
+    private fun handleCharacterListChanged(characterList: Resource<List<Character>>?) {
         // TODO: show list
     }
 }
