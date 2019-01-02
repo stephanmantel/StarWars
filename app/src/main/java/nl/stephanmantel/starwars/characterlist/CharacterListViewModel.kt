@@ -2,20 +2,28 @@ package nl.stephanmantel.starwars.characterlist
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import io.reactivex.android.schedulers.AndroidSchedulers
 import nl.stephanmantel.domain.Character
+import nl.stephanmantel.starwars.common.BaseViewmodel
 import nl.stephanmantel.starwars.common.Resource
+import nl.stephanmantel.starwars.extensions.plusAssign
 
 internal class CharacterListViewModel (
     private val repository: CharacterListRepository
-) : ViewModel() {
+) : BaseViewmodel() {
 
     private val characterListMutableLiveData = MutableLiveData<Resource<List<Character>>>()
     internal val characterListLiveData: LiveData<Resource<List<Character>>> = characterListMutableLiveData
 
     internal fun fetchCharacters() {
         characterListMutableLiveData.value = Resource.loading()
-        repository.requestPeople(1)
+        compositeDisposable += repository.requestPeople(1)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                characterListMutableLiveData.value = Resource.success(it)
+            }, {
+                characterListMutableLiveData.value = Resource.error(it)
+            })
     }
 
 }
