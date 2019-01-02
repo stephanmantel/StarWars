@@ -30,7 +30,6 @@ internal class CharacterListFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         configureViews()
         observeViewModelData()
-        viewModel.fetchCharacters()
     }
 
     private fun configureViews() {

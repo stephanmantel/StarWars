@@ -15,7 +15,11 @@ internal class CharacterListViewModel (
     private val characterListMutableLiveData = MutableLiveData<Resource<List<Character>>>()
     internal val characterListLiveData: LiveData<Resource<List<Character>>> = characterListMutableLiveData
 
-    internal fun fetchCharacters() {
+    init {
+        fetchCharacters()
+    }
+
+    private fun fetchCharacters() {
         characterListMutableLiveData.value = Resource.loading()
         compositeDisposable += repository.requestPeople()
             .observeOn(AndroidSchedulers.mainThread())
