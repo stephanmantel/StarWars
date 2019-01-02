@@ -29,4 +29,9 @@ val NetworkModule = module {
             .build()
     }
 
+    single<StarWarsService> {
+        val retrofit: Retrofit = get()
+        retrofit.create(StarWarsService::class.java)
+    }
+
 }
