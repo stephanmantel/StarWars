@@ -1,7 +1,7 @@
 package nl.stephanmantel.starwars.main
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import nl.stephanmantel.starwars.R
 
 class MainActivity: AppCompatActivity() {

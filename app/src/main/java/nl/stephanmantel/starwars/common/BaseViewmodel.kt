@@ -1,6 +1,6 @@
 package nl.stephanmantel.starwars.common
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseViewmodel: ViewModel() {

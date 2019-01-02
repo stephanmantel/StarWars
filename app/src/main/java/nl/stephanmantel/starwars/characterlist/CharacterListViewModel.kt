@@ -1,7 +1,7 @@
 package nl.stephanmantel.starwars.characterlist
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import nl.stephanmantel.domain.Character
 import nl.stephanmantel.starwars.common.BaseViewmodel

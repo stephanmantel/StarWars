@@ -1,8 +1,8 @@
 package nl.stephanmantel.starwars.characterlist
 
-import android.support.v7.recyclerview.extensions.ListAdapter
-import android.support.v7.util.DiffUtil
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import nl.stephanmantel.domain.Character
 
 private val characterDiffUtil = object : DiffUtil.ItemCallback<Character>() {
