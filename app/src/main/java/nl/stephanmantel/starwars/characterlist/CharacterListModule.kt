@@ -6,7 +6,7 @@ import org.koin.dsl.module.module
 val CharacterListModule = module {
 
     single {
-        CharacterListRepository(get())
+        CharacterListRepository(get(), get())
     }
 
     viewModel {
