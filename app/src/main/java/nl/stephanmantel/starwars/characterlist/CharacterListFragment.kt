@@ -3,6 +3,7 @@ package nl.stephanmantel.starwars.characterlist
 import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 internal class CharacterListFragment: Fragment() {
 
     private val viewModel: CharacterListViewModel by viewModel()
+    private val characterAdapter = CharacterAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,8 +28,14 @@ internal class CharacterListFragment: Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        configureViews()
         observeViewModelData()
         viewModel.fetchCharacters()
+    }
+
+    private fun configureViews() {
+        characterListRecyclerView.layoutManager = LinearLayoutManager(context)
+        characterListRecyclerView.adapter = characterAdapter
     }
 
     private fun observeViewModelData() {
@@ -48,6 +56,7 @@ internal class CharacterListFragment: Fragment() {
                 errorTextView.text = resource.error?.message
             }
             Status.SUCCESS -> {
+                characterAdapter.submitList(resource.data)
                 errorTextView.visibility = View.GONE
                 loadingIndicator.visibility = View.GONE
             }
