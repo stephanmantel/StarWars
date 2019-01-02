@@ -31,6 +31,13 @@ android {
 dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation "androidx.room:room-runtime:2.0.0-alpha1"
-    kapt "androidx.room:room-compiler:2.0.0-alpha1"
+    // Koin
+    implementation "org.koin:koin-android:$koin_version"
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version" // use kapt for Kotlin
+    // optional - RxJava support for Room
+    implementation "io.reactivex.rxjava2:rxjava:$rx_java_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
 }
