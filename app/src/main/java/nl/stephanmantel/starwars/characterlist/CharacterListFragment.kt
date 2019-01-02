@@ -39,12 +39,16 @@ internal class CharacterListFragment: Fragment() {
     private fun handleCharacterListChanged(resource: Resource<List<Character>>?) {
         when (resource?.status) {
             Status.LOADING -> {
+                errorTextView.visibility = View.GONE
                 loadingIndicator.visibility = View.VISIBLE
             }
             Status.ERROR -> {
+                errorTextView.visibility = View.VISIBLE
                 loadingIndicator.visibility = View.GONE
+                errorTextView.text = resource.error?.message
             }
             Status.SUCCESS -> {
+                errorTextView.visibility = View.GONE
                 loadingIndicator.visibility = View.GONE
             }
         }
