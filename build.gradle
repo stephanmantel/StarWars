@@ -5,6 +5,8 @@ buildscript {
     ext.nav_version = "1.0.0-alpha09"
     ext.koin_version = '1.0.2'
     ext.retrofit_version = '2.5.0'
+    ext.rx_java_version = '2.2.5'
+    ext.rx_android_version = '2.1.0'
 
     repositories {
         google()
