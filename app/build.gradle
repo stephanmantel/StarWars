@@ -28,6 +28,7 @@ dependencies {
 
     implementation project(':domain')
 
+    // Architecture components - Navigation
     implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version" // use -ktx for Kotlin
     implementation "android.arch.navigation:navigation-ui-ktx:$nav_version" // use -ktx for Kotlin
 }
