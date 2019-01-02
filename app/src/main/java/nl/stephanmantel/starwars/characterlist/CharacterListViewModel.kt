@@ -15,7 +15,7 @@ internal class CharacterListViewModel (
 
     internal fun fetchCharacters() {
         characterListMutableLiveData.value = Resource.loading()
-        characterListMutableLiveData.value = Resource.success(emptyList())
+        repository.requestPeople(1)
     }
 
 }

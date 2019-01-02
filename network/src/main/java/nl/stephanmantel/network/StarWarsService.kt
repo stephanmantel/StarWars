@@ -1,6 +1,7 @@
 package nl.stephanmantel.network
 
 import io.reactivex.Single
+import nl.stephanmantel.network.rawdomain.character.CharacterRaw
 import retrofit2.http.GET
 import retrofit2.http.Path
 
