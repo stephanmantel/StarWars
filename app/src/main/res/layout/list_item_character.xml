@@ -9,7 +9,7 @@
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="BB-8"
-    />
+        android:fontFamily="@font/poller_one"
+        tools:text="BB-8" />
 
 </LinearLayout>
