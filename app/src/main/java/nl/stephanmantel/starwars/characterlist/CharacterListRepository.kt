@@ -22,6 +22,7 @@ class CharacterListRepository (
             }
             .doOnSuccess {
                 characterDao.storeCharacters(it)
+            .doOnEvent { _, _ ->
                 isFetching = false
             }
         return localCharacters.toObservable()
