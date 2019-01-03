@@ -35,6 +35,14 @@ internal class CharacterListFragment: Fragment() {
     private fun configureViews() {
         characterListRecyclerView.layoutManager = LinearLayoutManager(context)
         characterListRecyclerView.adapter = characterAdapter
+
+        sortByNameButton.setOnClickListener {
+            viewModel.sortCharactersByName()
+        }
+
+        sortByBirthDateButton.setOnClickListener {
+            viewModel.sortCharactersByBirthDate()
+        }
     }
 
     private fun observeViewModelData() {
