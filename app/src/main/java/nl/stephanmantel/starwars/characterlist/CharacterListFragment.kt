@@ -40,8 +40,8 @@ internal class CharacterListFragment: Fragment() {
             viewModel.sortCharactersByName()
         }
 
-        sortByBirthDateButton.setOnClickListener {
-            viewModel.sortCharactersByBirthDate()
+        sortByAgeButton.setOnClickListener {
+            viewModel.sortCharactersByAge()
         }
     }
 
