@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:textColor="#930000"
+        android:textColor="@color/errorMessageColor"
         android:layout_gravity="center"
         tools:visibility="visible"
         tools:text="Somehing went wrong"

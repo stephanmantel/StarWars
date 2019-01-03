@@ -2,4 +2,5 @@
 <resources>
     <color name="colorPrimary">#000000</color>
     <color name="colorAccent">#eedb50</color>
+    <color name="errorMessageColor">#930000</color>
 </resources>
