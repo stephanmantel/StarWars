@@ -17,4 +17,9 @@ val StorageModule = module {
         val database: StarWarsRoomDatabase = get()
         database.characterDao()
     }
+
+    factory {
+        val database: StarWarsRoomDatabase = get()
+        database.favouritesDao()
+    }
 }
