@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_character_list.*
 import nl.stephanmantel.domain.Character
@@ -20,10 +21,13 @@ internal class CharacterListFragment: Fragment() {
     private val onFavouriteChanged = { character: Character, isFavourite: Boolean ->
         viewModel.setCharacterFavourite(character, isFavourite)
     }
-    private val onCharacterClicked = { character: Character ->
-
+    private val onCharacterClicked: (Character) -> Unit = {
+        navController?.navigate(R.id.action_characterListFragment_to_characterDetailFragment)
     }
     private val characterAdapter = CharacterAdapter(onFavouriteChanged, onCharacterClicked)
+    private val navController by lazy {
+        view?.findNavController()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
