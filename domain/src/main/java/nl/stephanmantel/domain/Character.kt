@@ -10,5 +10,8 @@ internal const val TABLE_NAME_CHARACTERS = "Characters"
 data class Character (
     @PrimaryKey
     @ColumnInfo(name = "name")
-    val name: String
+    val name: String,
+
+    @ColumnInfo(name = "birthYear")
+    val birthYear: Float?
 )
