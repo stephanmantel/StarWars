@@ -1,4 +1,4 @@
-package nl.stephanmantel.starwars.characterlist
+package nl.stephanmantel.starwars.common
 
 data class DataWithNetworkState<DataType> (
     val isFetching: Boolean,

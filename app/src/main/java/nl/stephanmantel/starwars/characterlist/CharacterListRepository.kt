@@ -5,6 +5,7 @@ import io.reactivex.schedulers.Schedulers
 import nl.stephanmantel.domain.Character
 import nl.stephanmantel.network.StarWarsService
 import nl.stephanmantel.network.rawdomain.character.CharacterMapper
+import nl.stephanmantel.starwars.common.DataWithNetworkState
 import nl.stephanmantel.storage.CharacterDao
 
 class CharacterListRepository (
