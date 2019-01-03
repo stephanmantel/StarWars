@@ -32,9 +32,9 @@ class CharacterMapper: Mapper<CharacterRaw, Character>() {
         val regex = Regex("([0-9]+\\.?)+([A-Z]+)")
         val groups = regex.find(raw)?.groupValues
         return groups?.let {
-            if (groups.size != 2) return null
-            val year = groups[0].toFloat()
-            val era = groups[1]
+            if (groups.size != 3) return null
+            val year = groups[1].toFloat()
+            val era = groups[2]
 
             val eraMultiplier = if (era == "BBY") -1 else 1
             year * eraMultiplier
