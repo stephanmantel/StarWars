@@ -18,7 +18,7 @@ interface FavouritesDao {
     fun addFavourtie(favourite: Favourite): Long
 
     @Delete
-    fun deleteFavourtie(favourite: Favourite): Long
+    fun deleteFavourite(favourite: Favourite)
 
     @Query("DELETE FROM $TABLE_NAME_FAVOURITES")
     fun deleteAll()
