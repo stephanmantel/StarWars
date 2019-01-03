@@ -15,7 +15,7 @@ interface FavouritesDao {
     fun getFavourites(): Single<List<Favourite>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addFavourtie(favourite: Favourite): Long
+    fun addFavourite(favourite: Favourite): Long
 
     @Delete
     fun deleteFavourite(favourite: Favourite)
