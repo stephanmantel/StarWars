@@ -13,7 +13,8 @@ class CharacterListRepository (
     private val characterMapper: CharacterMapper
 ) {
 
-    fun requestPeople(): Observable<List<Character>> {
+    fun requestPeople(): Observable<DataWithNetworkState<List<Character>>> {
+        var isFetching = true
         val localCharacters = characterDao.getCharacters()
         val networkCharacters = starWarsService.getPeople()
             .map {
@@ -21,9 +22,13 @@ class CharacterListRepository (
             }
             .doOnSuccess {
                 characterDao.storeCharacters(it)
+                isFetching = false
             }
         return localCharacters.toObservable()
             .concatWith(networkCharacters.toObservable())
+            .map {
+                DataWithNetworkState(isFetching, it)
+            }
             .subscribeOn(Schedulers.io())
     }
 

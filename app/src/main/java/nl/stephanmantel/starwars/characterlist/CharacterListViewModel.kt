@@ -24,7 +24,11 @@ internal class CharacterListViewModel (
         compositeDisposable += repository.requestPeople()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                characterListMutableLiveData.value = Resource.success(it)
+                characterListMutableLiveData.value = if (it.isFetching) {
+                    Resource.loading(it.data)
+                } else {
+                    Resource.success(it.data)
+                }
             }, {
                 characterListMutableLiveData.value = Resource.error(it)
             })
