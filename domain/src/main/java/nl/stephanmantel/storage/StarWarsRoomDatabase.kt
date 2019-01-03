@@ -8,7 +8,7 @@ import nl.stephanmantel.domain.Character
     entities = [
         Character::class
     ],
-    version = 1
+    version = 2
 )
 abstract class StarWarsRoomDatabase : RoomDatabase() {
     abstract fun characterDao(): CharacterDao
