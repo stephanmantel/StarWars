@@ -24,32 +24,22 @@ internal class CharacterListViewModel (
         compositeDisposable += repository.requestPeople()
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                val characters = it.data.sortedWith(compareBy(byName))
                 characterListMutableLiveData.value = if (it.isFetching) {
-                    Resource.loading(it.data)
+                    Resource.loading(characters)
                 } else {
-                    Resource.success(it.data)
+                    Resource.success(characters)
                 }
             }, {
                 characterListMutableLiveData.value = Resource.error(it)
             })
     }
 
-    internal fun sortCharactersByName() {
+    internal fun sortCharacters(sorter: (Character) -> Comparable<*>?) {
         val characters = characterListLiveData.value?.data ?: return
         characterListMutableLiveData.value = Resource.loading(characters)
-        val sorted = characters.sortedBy {
-            it.name
-        }
-        characterListMutableLiveData.value = Resource.success(sorted)
-    }
-
-    internal fun sortCharactersByAge() {
-        val characters = characterListLiveData.value?.data ?: return
-        characterListMutableLiveData.value = Resource.loading(characters)
-        val sorted = characters.sortedBy {
-            it.birthYear
-        }
-        characterListMutableLiveData.value = Resource.success(sorted)
+        val sortedList = characters.sortedWith(compareBy(sorter))
+        characterListMutableLiveData.value = Resource.success(sortedList)
     }
 
 }

@@ -37,11 +37,11 @@ internal class CharacterListFragment: Fragment() {
         characterListRecyclerView.adapter = characterAdapter
 
         sortByNameButton.setOnClickListener {
-            viewModel.sortCharactersByName()
+            viewModel.sortCharacters(byName)
         }
 
         sortByAgeButton.setOnClickListener {
-            viewModel.sortCharactersByAge()
+            viewModel.sortCharacters(byAge)
         }
     }
 
