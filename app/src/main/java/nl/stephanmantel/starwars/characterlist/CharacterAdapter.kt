@@ -10,10 +10,12 @@ private val characterDiffUtil = object : DiffUtil.ItemCallback<Character>() {
     override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean = oldItem == newItem
 }
 
-class CharacterAdapter: ListAdapter<Character, CharacterViewHolder>(characterDiffUtil) {
+class CharacterAdapter (
+    private val onFavouriteChanged: (Character, isFavourite: Boolean) -> Unit
+): ListAdapter<Character, CharacterViewHolder>(characterDiffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
-        return CharacterViewHolder.newInstance(parent)
+        return CharacterViewHolder.newInstance(parent, onFavouriteChanged)
     }
 
     override fun onBindViewHolder(viewHolder: CharacterViewHolder, position: Int) {

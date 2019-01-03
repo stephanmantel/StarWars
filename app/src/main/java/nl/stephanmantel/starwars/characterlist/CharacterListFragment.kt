@@ -17,7 +17,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 internal class CharacterListFragment: Fragment() {
 
     private val viewModel: CharacterListViewModel by viewModel()
-    private val characterAdapter = CharacterAdapter()
+    private val onFavouriteChanged = { character: Character, isFavourite: Boolean ->
+        viewModel.setCharacterFavourite(character, isFavourite)
+    }
+    private val characterAdapter = CharacterAdapter(onFavouriteChanged)
 
     override fun onCreateView(
         inflater: LayoutInflater,

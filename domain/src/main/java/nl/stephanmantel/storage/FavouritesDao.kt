@@ -17,8 +17,12 @@ interface FavouritesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addFavourite(favourite: Favourite): Long
 
-    @Delete
-    fun deleteFavourite(favourite: Favourite)
+    @Query("""
+        DELETE
+        FROM $TABLE_NAME_FAVOURITES
+        WHERE 'name' = :name
+    """)
+    fun delete(name: String)
 
     @Query("DELETE FROM $TABLE_NAME_FAVOURITES")
     fun deleteAll()

@@ -14,8 +14,8 @@ data class Character (
     val name: String,
 
     @ColumnInfo(name = "birthYear")
-    val birthYear: Float?,
-
+    val birthYear: Float?
+) {
     @Ignore
     var isFavourite: Boolean = false
-)
+}

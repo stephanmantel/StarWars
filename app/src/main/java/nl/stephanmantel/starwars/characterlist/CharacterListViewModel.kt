@@ -44,6 +44,10 @@ internal class CharacterListViewModel (
             })
     }
 
+    internal fun setCharacterFavourite(character: Character, isFavourite: Boolean) {
+        favouritesRepository.setFavourite(character, isFavourite)
+    }
+
     private fun setCharactersFavouriteStates(
         favourites: List<Favourite>,
         characters: List<Character>
