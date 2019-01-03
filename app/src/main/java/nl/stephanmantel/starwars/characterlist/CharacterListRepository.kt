@@ -22,6 +22,8 @@ class CharacterListRepository (
             }
             .doOnSuccess {
                 characterDao.storeCharacters(it)
+            }
+            .onErrorResumeNext(localCharacters)
             .doOnEvent { _, _ ->
                 isFetching = false
             }
