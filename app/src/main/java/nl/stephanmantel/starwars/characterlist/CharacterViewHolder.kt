@@ -11,17 +11,19 @@ import nl.stephanmantel.starwars.R
 
 class CharacterViewHolder(
     override val containerView: View,
-    private val onFavouriteChanged: (Character, isFavourite: Boolean) -> Unit
+    private val onFavouriteChanged: (Character, isFavourite: Boolean) -> Unit,
+    private val onCharacterClicked: (Character) -> Unit
 ): RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     companion object {
         fun newInstance(
             parent: ViewGroup,
-            onFavouriteChanged: (Character, isFavourite: Boolean) -> Unit
+            onFavouriteChanged: (Character, isFavourite: Boolean) -> Unit,
+            onCharacterClicked: (Character) -> Unit
         ): CharacterViewHolder {
             val context = parent.context
             val itemView = LayoutInflater.from(context).inflate(R.layout.list_item_character, parent, false)
-            return CharacterViewHolder(itemView, onFavouriteChanged)
+            return CharacterViewHolder(itemView, onFavouriteChanged, onCharacterClicked)
         }
     }
 
@@ -30,6 +32,9 @@ class CharacterViewHolder(
     init {
         itemView.favouriteToggle.setOnCheckedChangeListener { _, isChecked ->
             onFavouriteChanged(character, isChecked)
+        }
+        itemView.setOnClickListener {
+            onCharacterClicked(character)
         }
     }
 

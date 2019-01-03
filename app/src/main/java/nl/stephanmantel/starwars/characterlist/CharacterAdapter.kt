@@ -11,11 +11,12 @@ private val characterDiffUtil = object : DiffUtil.ItemCallback<Character>() {
 }
 
 class CharacterAdapter (
-    private val onFavouriteChanged: (Character, isFavourite: Boolean) -> Unit
+    private val onFavouriteChanged: (Character, isFavourite: Boolean) -> Unit,
+    private val onCharacterClicked: (Character) -> Unit
 ): ListAdapter<Character, CharacterViewHolder>(characterDiffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
-        return CharacterViewHolder.newInstance(parent, onFavouriteChanged)
+        return CharacterViewHolder.newInstance(parent, onFavouriteChanged, onCharacterClicked)
     }
 
     override fun onBindViewHolder(viewHolder: CharacterViewHolder, position: Int) {

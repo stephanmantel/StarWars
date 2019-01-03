@@ -20,7 +20,10 @@ internal class CharacterListFragment: Fragment() {
     private val onFavouriteChanged = { character: Character, isFavourite: Boolean ->
         viewModel.setCharacterFavourite(character, isFavourite)
     }
-    private val characterAdapter = CharacterAdapter(onFavouriteChanged)
+    private val onCharacterClicked = { character: Character ->
+
+    }
+    private val characterAdapter = CharacterAdapter(onFavouriteChanged, onCharacterClicked)
 
     override fun onCreateView(
         inflater: LayoutInflater,
