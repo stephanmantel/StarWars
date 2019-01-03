@@ -22,7 +22,9 @@ internal class CharacterListFragment: Fragment() {
         viewModel.setCharacterFavourite(character, isFavourite)
     }
     private val onCharacterClicked: (Character) -> Unit = {
-        navController?.navigate(R.id.action_characterListFragment_to_characterDetailFragment)
+        val bundle = Bundle().apply {
+        }
+        navController?.navigate(R.id.action_characterListFragment_to_characterDetailFragment, bundle)
     }
     private val characterAdapter = CharacterAdapter(onFavouriteChanged, onCharacterClicked)
     private val navController by lazy {
