@@ -2,29 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ToggleButton
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poller_one"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        tools:text="BB-8" />
+
+    <CheckBox
         android:id="@+id/favouriteToggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="favourite"
-        android:textColor="#fff"
-        android:background="#dfa"
+        android:layout_gravity="center"
+        android:button="@drawable/selector_ic_star"
         />
-
-    <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:fontFamily="@font/poller_one"
-        android:textColor="@color/colorAccent"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:textSize="20sp"
-        tools:text="BB-8" />
 
 </LinearLayout>
