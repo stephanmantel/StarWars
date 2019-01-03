@@ -47,7 +47,7 @@ internal class CharacterListViewModel (
         val characters = characterListLiveData.value?.data ?: return
         characterListMutableLiveData.value = Resource.loading(characters)
         val sorted = characters.sortedByDescending {
-            it.name
+            it.birthYear
         }
         characterListMutableLiveData.value = Resource.success(sorted)
     }
