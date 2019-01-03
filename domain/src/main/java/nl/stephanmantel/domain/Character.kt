@@ -2,6 +2,7 @@ package nl.stephanmantel.domain
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 internal const val TABLE_NAME_CHARACTERS = "Characters"
@@ -13,5 +14,8 @@ data class Character (
     val name: String,
 
     @ColumnInfo(name = "birthYear")
-    val birthYear: Float?
+    val birthYear: Float?,
+
+    @Ignore
+    var isFavourite: Boolean = false
 )

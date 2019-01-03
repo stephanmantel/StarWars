@@ -2,14 +2,17 @@ package nl.stephanmantel.starwars.characterlist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import nl.stephanmantel.domain.Character
+import nl.stephanmantel.domain.Favourite
 import nl.stephanmantel.starwars.common.BaseViewmodel
 import nl.stephanmantel.starwars.common.Resource
 import nl.stephanmantel.starwars.extensions.plusAssign
 
 internal class CharacterListViewModel (
-    private val repository: CharacterListRepository
+    private val repository: CharacterListRepository,
+    private val favouritesRepository: FavouritesRepository
 ) : BaseViewmodel() {
 
     private val characterListMutableLiveData = MutableLiveData<Resource<List<Character>>>()
@@ -22,6 +25,12 @@ internal class CharacterListViewModel (
     private fun fetchCharacters() {
         characterListMutableLiveData.value = Resource.loading()
         compositeDisposable += repository.requestPeople()
+            .flatMapSingle { characterData ->
+                favouritesRepository.getFavourites().doOnSuccess { favourites ->
+                    setCharactersFavouriteStates(favourites, characterData.data)
+                }
+                Single.just(characterData)
+            }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 val characters = it.data.sortedWith(compareBy(byName))
@@ -33,6 +42,18 @@ internal class CharacterListViewModel (
             }, {
                 characterListMutableLiveData.value = Resource.error(it)
             })
+    }
+
+    private fun setCharactersFavouriteStates(
+        favourites: List<Favourite>,
+        characters: List<Character>
+    ) {
+        characters.forEach { character ->
+            val isFavourite = favourites.any {
+                it.name == character.name
+            }
+            character.isFavourite = isFavourite
+        }
     }
 
     internal fun sortCharacters(sorter: (Character) -> Comparable<*>?) {

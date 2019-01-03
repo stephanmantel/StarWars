@@ -23,6 +23,9 @@ class CharacterViewHolder(
 
     fun bind(character: Character) {
         itemView.nameTextView.text = character.name
+        if (character.isFavourite) {
+            itemView.nameTextView.setTextColor(0x123567)
+        }
     }
 
 }

@@ -10,8 +10,12 @@ val CharacterListModule = module {
         CharacterListRepository(get(), get(), get())
     }
 
+    single {
+        FavouritesRepository(get())
+    }
+
     viewModel {
-        CharacterListViewModel(get())
+        CharacterListViewModel(get(), get())
     }
 
 }

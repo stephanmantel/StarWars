@@ -10,7 +10,7 @@ import nl.stephanmantel.domain.Favourite
         Character::class,
         Favourite::class
     ],
-    version = 3
+    version = 4
 )
 abstract class StarWarsRoomDatabase : RoomDatabase() {
     abstract fun characterDao(): CharacterDao
