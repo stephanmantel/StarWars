@@ -9,6 +9,10 @@ import nl.stephanmantel.starwars.R
 
 class CharacterDetailFragment: Fragment() {
 
+    companion object {
+        const val BUNDLE_KEY_CHARACTER = "CHARACTER"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,6 +31,6 @@ class CharacterDetailFragment: Fragment() {
     }
 
     private fun observeViewModelData() {
-        
+
     }
 }

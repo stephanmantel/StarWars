@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_character_list.*
 import nl.stephanmantel.domain.Character
 import nl.stephanmantel.starwars.R
+import nl.stephanmantel.starwars.characterdetail.CharacterDetailFragment.Companion.BUNDLE_KEY_CHARACTER
 import nl.stephanmantel.starwars.common.Resource
 import nl.stephanmantel.starwars.common.Status
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,6 +24,7 @@ internal class CharacterListFragment: Fragment() {
     }
     private val onCharacterClicked: (Character) -> Unit = {
         val bundle = Bundle().apply {
+            putParcelable(BUNDLE_KEY_CHARACTER, it)
         }
         navController?.navigate(R.id.action_characterListFragment_to_characterDetailFragment, bundle)
     }
