@@ -1,9 +1,7 @@
 package nl.stephanmantel.starwars.characterlist
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
@@ -33,6 +31,11 @@ internal class CharacterListFragment: Fragment() {
         view?.findNavController()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,14 +52,6 @@ internal class CharacterListFragment: Fragment() {
     private fun configureViews() {
         characterListRecyclerView.layoutManager = LinearLayoutManager(context)
         characterListRecyclerView.adapter = characterAdapter
-
-        sortByNameButton.setOnClickListener {
-            viewModel.sortCharacters(byName)
-        }
-
-        sortByAgeButton.setOnClickListener {
-            viewModel.sortCharacters(byAge)
-        }
     }
 
     private fun observeViewModelData() {
@@ -82,5 +77,21 @@ internal class CharacterListFragment: Fragment() {
                 loadingIndicator.visibility = View.GONE
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.character_list_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.sortByName -> {
+                viewModel.sortCharacters(byName)
+            }
+            R.id.sortByAge -> {
+                viewModel.sortCharacters(byAge)
+            }
+        }
+        return true
     }
 }
