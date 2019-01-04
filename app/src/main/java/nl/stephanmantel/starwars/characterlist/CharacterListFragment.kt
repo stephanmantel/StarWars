@@ -12,7 +12,9 @@ import nl.stephanmantel.starwars.R
 import nl.stephanmantel.starwars.characterdetail.CharacterDetailFragment.Companion.BUNDLE_KEY_CHARACTER
 import nl.stephanmantel.starwars.common.Resource
 import nl.stephanmantel.starwars.common.Status
+import nl.stephanmantel.starwars.extensions.onBottomReached
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 internal class CharacterListFragment: Fragment() {
 
@@ -52,6 +54,9 @@ internal class CharacterListFragment: Fragment() {
     private fun configureViews() {
         characterListRecyclerView.layoutManager = LinearLayoutManager(context)
         characterListRecyclerView.adapter = characterAdapter
+        characterListRecyclerView.onBottomReached {
+            viewModel.fetchMoreCharacters()
+        }
     }
 
     private fun observeViewModelData() {
