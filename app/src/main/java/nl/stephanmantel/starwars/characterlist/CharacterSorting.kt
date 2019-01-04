@@ -9,3 +9,7 @@ internal val byName: (Character) -> Comparable<*>? = {
 internal val byAge: (Character) -> Comparable<*>? = {
     it.birthYear
 }
+
+internal val byFavouriteState: (Character) -> Comparable<*>? = {
+    !it.isFavourite
+}

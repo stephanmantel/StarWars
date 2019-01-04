@@ -91,6 +91,9 @@ internal class CharacterListFragment: Fragment() {
             R.id.sortByAge -> {
                 viewModel.sortCharacters(byAge)
             }
+            R.id.sortByFavourite -> {
+                viewModel.sortCharacters(byFavouriteState)
+            }
         }
         return true
     }
