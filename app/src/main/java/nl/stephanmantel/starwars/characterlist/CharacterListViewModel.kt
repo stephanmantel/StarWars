@@ -7,6 +7,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import nl.stephanmantel.domain.Character
 import nl.stephanmantel.domain.Favourite
 import nl.stephanmantel.starwars.common.BaseViewmodel
+import nl.stephanmantel.starwars.common.DataWithNetworkState
 import nl.stephanmantel.starwars.common.Resource
 import nl.stephanmantel.starwars.extensions.plusAssign
 
@@ -26,10 +27,11 @@ internal class CharacterListViewModel (
         characterListMutableLiveData.value = Resource.loading()
         compositeDisposable += repository.requestPeople()
             .flatMapSingle { characterData ->
-                favouritesRepository.getFavourites().doOnSuccess { favourites ->
-                    setCharactersFavouriteStates(favourites, characterData.data)
-                }
-                Single.just(characterData)
+                favouritesRepository.getFavourites()
+                    .map { favourites ->
+                        val favList = setCharactersFavouriteStates(favourites, characterData.data)
+                        DataWithNetworkState(characterData.isFetching, favList)
+                    }
             }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -51,13 +53,14 @@ internal class CharacterListViewModel (
     private fun setCharactersFavouriteStates(
         favourites: List<Favourite>,
         characters: List<Character>
-    ) {
+    ): List<Character> {
         characters.forEach { character ->
             val isFavourite = favourites.any {
                 it.name == character.name
             }
             character.isFavourite = isFavourite
         }
+        return characters
     }
 
     internal fun sortCharacters(sorter: (Character) -> Comparable<*>?) {
