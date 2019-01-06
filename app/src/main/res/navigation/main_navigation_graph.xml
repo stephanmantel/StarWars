@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/characterListFragment"
         android:name="nl.stephanmantel.starwars.characterlist.CharacterListFragment"
-        tools:layout="@layout/fragment_character_list"
-        android:label="CharacterListFragment" >
+        android:label="Characters"
+        tools:layout="@layout/fragment_character_list">
         <action
             android:id="@+id/action_characterListFragment_to_characterDetailFragment"
             app:destination="@id/characterDetailFragment" />
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/characterDetailFragment"
         android:name="nl.stephanmantel.starwars.characterdetail.CharacterDetailFragment"
-        tools:layout="@layout/fragment_character_detail"
-        android:label="CharacterDetailFragment" />
+        android:label="Character details"
+        tools:layout="@layout/fragment_character_detail" />
 </navigation>
