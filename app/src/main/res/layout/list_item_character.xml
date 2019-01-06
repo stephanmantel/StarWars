@@ -18,6 +18,14 @@
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         tools:text="BB-8" />
+        <TextView
+            android:id="@+id/ageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/geostar"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            tools:text="157" />
 
     <CheckBox
         android:id="@+id/favouriteToggle"

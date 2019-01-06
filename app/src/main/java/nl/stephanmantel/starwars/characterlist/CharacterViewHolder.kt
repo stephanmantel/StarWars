@@ -42,6 +42,7 @@ class CharacterViewHolder(
         this.character = character
         itemView.nameTextView.text = character.name
         itemView.favouriteToggle.isChecked = character.isFavourite
+        itemView.ageTextView.text = character.birthYear
     }
 
 }

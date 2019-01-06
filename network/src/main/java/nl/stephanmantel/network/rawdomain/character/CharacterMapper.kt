@@ -8,9 +8,10 @@ class CharacterMapper: Mapper<CharacterRaw, Character>() {
 
     override fun map(raw: CharacterRaw): Character {
         val name = raw.name ?: { throw EssentialParamsMissingException(listOf("name"), raw)}()
+        val birthYear = raw.birthYear ?: { throw EssentialParamsMissingException(listOf("birthYear"), raw)}()
         return Character(
             name,
-            mapBirthYear(raw.birthYear)
+            birthYear
         )
     }
 
@@ -26,19 +27,6 @@ class CharacterMapper: Mapper<CharacterRaw, Character>() {
         }
     }
 
-    private fun mapBirthYear(raw: String?): Float? {
-        if (raw.isNullOrEmpty() || raw == "unknown") return null
 
-        val regex = Regex("([0-9]+\\.?)+([A-Z]+)")
-        val groups = regex.find(raw)?.groupValues
-        return groups?.let {
-            if (groups.size != 3) return null
-            val year = groups[1].toFloat()
-            val era = groups[2]
-
-            val eraMultiplier = if (era == "BBY") -1 else 1
-            year * eraMultiplier
-        }
-    }
 
 }

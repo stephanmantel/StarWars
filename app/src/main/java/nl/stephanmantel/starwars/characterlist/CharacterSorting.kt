@@ -7,7 +7,7 @@ internal val byName: (Character) -> Comparable<*>? = {
 }
 
 internal val byAge: (Character) -> Comparable<*>? = {
-    it.birthYear
+    it.birthYearAsFloat()
 }
 
 internal val byFavouriteState: (Character) -> Comparable<*>? = {
