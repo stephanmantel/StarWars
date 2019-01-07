@@ -18,7 +18,7 @@ internal class CharacterListViewModel (
 ) : BaseViewmodel() {
 
     private val characterListMutableLiveData = MutableLiveData<Resource<List<Character>>>()
-    internal val characterListLiveData: LiveData<Resource<List<Character>>> = characterListMutableLiveData
+    internal val characterListLiveData: LiveData<Resource<List<Character>>> get() = characterListMutableLiveData
     private var endOfDataSetReached = false
 
     init {
