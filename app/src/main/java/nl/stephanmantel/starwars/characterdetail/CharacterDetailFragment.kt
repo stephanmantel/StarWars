@@ -16,7 +16,6 @@ import nl.stephanmantel.starwars.movies.CardVoteListener
 import nl.stephanmantel.starwars.movies.MovieStackViewAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-import java.util.*
 
 class CharacterDetailFragment: Fragment() {
 
@@ -51,7 +50,6 @@ class CharacterDetailFragment: Fragment() {
 
     private fun observeViewModelData() {
         viewModel.characterLiveData.observe(viewLifecycleOwner, Observer { handleCharacterChanged(it) })
-        viewModel.moviesLiveData.observe(viewLifecycleOwner, Observer { handleMoviesChanged(it) })
     }
 
     private fun handleCharacterChanged(resource: Resource<Character>?) {
@@ -65,21 +63,6 @@ class CharacterDetailFragment: Fragment() {
             Status.SUCCESS -> {
                 showSuccess()
                 characterNameTextView.text = resource.data?.name
-            }
-        }
-    }
-
-    private fun handleMoviesChanged(resource: Resource<List<String>>?) {
-        when (resource?.status) {
-            Status.LOADING -> {
-                showLoading()
-            }
-            Status.ERROR -> {
-                showError(resource.error?.message)
-            }
-            Status.SUCCESS -> {
-                showSuccess()
-                adapter.submitList(resource.data)
             }
         }
     }
