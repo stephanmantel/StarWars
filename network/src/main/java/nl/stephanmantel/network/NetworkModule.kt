@@ -3,6 +3,7 @@ package nl.stephanmantel.network
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import nl.stephanmantel.network.rawdomain.character.CharacterMapper
+import nl.stephanmantel.network.rawdomain.film.FilmMapper
 import okhttp3.OkHttpClient
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
@@ -37,5 +38,9 @@ val NetworkModule = module {
 
     factory {
         CharacterMapper()
+    }
+
+    factory {
+        FilmMapper()
     }
 }
