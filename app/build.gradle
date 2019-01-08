@@ -49,4 +49,7 @@ dependencies {
     // Architecture components - Navigation
     implementation "androidx.paging:paging-runtime-ktx:$paging_version" // use -ktx for Kotlin
 //    implementation "androidx.paging:paging-rxjava2-ktx:$paging_version" // use -ktx for Kotlin
+
+    // Swipe stack
+    implementation 'link.fls:swipestack:0.3.0'
 }
