@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import nl.stephanmantel.data.characters.CharactersRepository
 import nl.stephanmantel.data.common.DataWithNetworkState
+import nl.stephanmantel.data.favourites.FavouritesRepository
 import nl.stephanmantel.domain.Character
 import nl.stephanmantel.domain.Favourite
 import nl.stephanmantel.starwars.common.BaseViewmodel

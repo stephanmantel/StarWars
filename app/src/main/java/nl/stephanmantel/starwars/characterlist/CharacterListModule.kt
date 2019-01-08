@@ -6,10 +6,6 @@ import org.koin.dsl.module.module
 
 val CharacterListModule = module {
 
-    single {
-        FavouritesRepository(get())
-    }
-
     viewModel {
         CharacterListViewModel(get(), get())
     }

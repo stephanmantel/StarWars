@@ -1,4 +1,4 @@
-package nl.stephanmantel.starwars.characterlist
+package nl.stephanmantel.data.favourites
 
 import io.reactivex.Single
 import nl.stephanmantel.domain.Character
