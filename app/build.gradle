@@ -51,5 +51,5 @@ dependencies {
 //    implementation "androidx.paging:paging-rxjava2-ktx:$paging_version" // use -ktx for Kotlin
 
     // Swipe stack
-    implementation 'link.fls:swipestack:0.3.0'
+    implementation "com.yuyakaido.android:card-stack-view:$card_stack_view_version"
 }
