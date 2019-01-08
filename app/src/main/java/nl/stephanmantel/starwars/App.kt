@@ -1,6 +1,7 @@
 package nl.stephanmantel.starwars
 
 import android.app.Application
+import nl.stephanmantel.data.characters.DataModule
 import nl.stephanmantel.network.NetworkModule
 import nl.stephanmantel.starwars.characterdetail.CharacterDetailModule
 import nl.stephanmantel.starwars.characterlist.CharacterListModule
@@ -15,7 +16,8 @@ class App: Application() {
             CharacterListModule,
             CharacterDetailModule,
             NetworkModule,
-            StorageModule
+            StorageModule,
+            DataModule
         ))
     }
 }

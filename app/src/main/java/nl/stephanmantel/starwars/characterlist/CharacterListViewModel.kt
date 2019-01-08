@@ -3,17 +3,17 @@ package nl.stephanmantel.starwars.characterlist
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
+import nl.stephanmantel.data.characters.CharactersRepository
+import nl.stephanmantel.data.common.DataWithNetworkState
 import nl.stephanmantel.domain.Character
 import nl.stephanmantel.domain.Favourite
 import nl.stephanmantel.starwars.common.BaseViewmodel
-import nl.stephanmantel.starwars.common.DataWithNetworkState
 import nl.stephanmantel.starwars.common.Resource
 import nl.stephanmantel.starwars.common.Status
 import nl.stephanmantel.starwars.extensions.plusAssign
-import java.net.ConnectException
 
 internal class CharacterListViewModel (
-    private val repository: CharacterListRepository,
+    private val repository: CharactersRepository,
     private val favouritesRepository: FavouritesRepository
 ) : BaseViewmodel() {
 

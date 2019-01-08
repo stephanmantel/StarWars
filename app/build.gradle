@@ -32,6 +32,7 @@ dependencies {
 
     implementation project(':domain')
     implementation project(':network')
+    implementation project(':data')
 
     // Koin
     implementation "org.koin:koin-android:$koin_version"

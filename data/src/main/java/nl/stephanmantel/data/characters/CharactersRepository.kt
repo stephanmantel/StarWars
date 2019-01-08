@@ -1,15 +1,15 @@
-package nl.stephanmantel.starwars.characterlist
+package nl.stephanmantel.data.characters
 
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import nl.stephanmantel.data.common.DataWithNetworkState
 import nl.stephanmantel.domain.Character
 import nl.stephanmantel.network.StarWarsService
 import nl.stephanmantel.network.rawdomain.character.CharacterMapper
-import nl.stephanmantel.starwars.common.DataWithNetworkState
 import nl.stephanmantel.storage.CharacterDao
 
-class CharacterListRepository (
+class CharactersRepository (
     private val starWarsService: StarWarsService,
     private val characterDao: CharacterDao,
     private val characterMapper: CharacterMapper
